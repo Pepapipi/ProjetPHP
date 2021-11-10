@@ -1,0 +1,11 @@
+header
+{
+    background-color: antiquewhite;
+}
+
+ul
+{
+    display: flex;
+    justify-content: space-around;
+
+}
