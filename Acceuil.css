@@ -3,6 +3,10 @@ header
     background-color: antiquewhite;
 }
 
+body{
+    background-color: darkgray;
+}
+
 ul
 {
     display: flex;
