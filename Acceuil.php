@@ -32,10 +32,16 @@
         $laCouverture = $unDisque->getCouverture();
         $leNom =        $unDisque->getTitre();
         $lAuteur =     $unDisque->getAuteur();
-        print ("<li><img src=$laCouverture height=\"150\" width=\"150\">
-        <p>$leNom</p>
-        <p>$lAuteur</p>
-    </li>");
+        print ("<li>
+        <form action=\"DetailDisc.php\" method=\"POST\">
+            <button type=\"submit\" name=\"\$unDisque\" class=\"styled\">
+                <img src=$laCouverture height=\"150\" width=\"150\" onclick=\"help\">
+                <p class=\"Titre\">$leNom</p>
+                <p>$lAuteur</p>
+            </button>
+        </form>
+    </li>
+    ");
     }
 
     print("</ul>

@@ -12,20 +12,25 @@ ul
     display: flex;
     justify-content: space-around;
     word-wrap: break-word;
-    white-space: pre-wrap;
+    white-space: pre-line;
     float: inline-end;
-
+    list-style-type: none;
+    align-items: flex-start;
 }
 
-h1{
-    font-size: 250%;
-}
-
-
-h2{
-    font-size: 100%;
+.Titre{
+    font-weight: bold;
 }
 
 p{
-    font-size: 75%;
+    bottom: 0%;
+    top: 0%;
+}
+
+.styled:hover {
+    cursor: pointer;
+}
+
+.styled:active {
+    
 }
