@@ -11,5 +11,21 @@ ul
 {
     display: flex;
     justify-content: space-around;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    float: inline-end;
 
+}
+
+h1{
+    font-size: 250%;
+}
+
+
+h2{
+    font-size: 100%;
+}
+
+p{
+    font-size: 75%;
 }

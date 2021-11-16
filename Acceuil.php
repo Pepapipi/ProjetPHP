@@ -1,12 +1,12 @@
 <?php
-
+    include "Collection.php";
 
     print("<!DOCTYPE html>
     <html>
         <head>
             <meta charset=\"UTF-8\">
             <title>Acceuil</title>
-            <link rel=\"stylesheet\" type=\"text/css\" href=\"Acceuil.css\" />
+            <link rel=\"stylesheet\" href=\"Acceuil.css\" />
         </head>
         <body>
             <header>
@@ -21,16 +21,22 @@
 
     $connPDO = new PDO ('mysql:host='.$host.';dbname='.$bdd, $user, $pass);
     $result = $connPDO->query("SELECT * FROM VentesCD");
+    $laCollection = new Collection();
+    $laCollection->loadFromQuerryPDO($result);
+    $result->closeCursor();
 
-
-    while ($tuple = $result->fetch()) {
-        print("<li><img src=$tuple[4] height=\"150\" width=\"150\">
-        <p>$tuple[0]</p>
-        <p>$tuple[1]</p>
+    $lesDisques = $laCollection->getDisques();
+    $nbDisques = sizeof($lesDisques);
+    for ($i=0; $i < $nbDisques; $i++) { 
+        $unDisque =     $lesDisques[$i];
+        $laCouverture = $unDisque->getCouverture();
+        $leNom =        $unDisque->getTitre();
+        $lAuteur =     $unDisque->getAuteur();
+        print ("<li><img src=$laCouverture height=\"150\" width=\"150\">
+        <p>$leNom</p>
+        <p>$lAuteur</p>
     </li>");
     }
-
-    $result->closeCursor();
 
     print("</ul>
     </body>
