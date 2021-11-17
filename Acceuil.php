@@ -1,6 +1,8 @@
 <?php
     include "Collection.php";
 
+    
+
     print("<!DOCTYPE html>
     <html>
         <head>
@@ -31,12 +33,12 @@
     <?php
     for ($i=0; $i < $nbDisques; $i++) { 
         $unDisque =     $lesDisques[$i];
-        $laCouverture = $unDisque->getCouverture();
+        $laCouverture = $unDisque->getCouvertureMin();
         $leNom =        $unDisque->getTitre();
         $lAuteur =     $unDisque->getAuteur();
         print ("<li>
         <form action=\"DetailDisc.php\" method=\"POST\">
-            <button type=\"submit\" name=\"\$unDisque\" class=\"styled\">
+            <button type=\"submit\" name=\"LeDisque\" class=\"styled\" value=\"$leNom\">
                 <img src=$laCouverture height=\"150\" width=\"150\" onclick=\"help\">
                 <p class=\"Titre\">$leNom</p>
                 <p>$lAuteur</p>
@@ -45,10 +47,7 @@
     </li>
     ");
     }
-    ?>
-    </ul>  
-<?php
-    print("
-    </body>
-</html>");
 ?>
+<ul>
+</body>
+</html>
