@@ -11,8 +11,7 @@
         <body>
             <header>
                 <h1>Achat de titre</h1>
-            </header>
-            <ul>");
+            </header>");
 
     $bdd = "dnunez_pro";
     $host = "lakartxela.iutbayonne.univ-pau.fr";
@@ -27,6 +26,9 @@
 
     $lesDisques = $laCollection->getDisques();
     $nbDisques = sizeof($lesDisques);
+    ?>
+    <ul>
+    <?php
     for ($i=0; $i < $nbDisques; $i++) { 
         $unDisque =     $lesDisques[$i];
         $laCouverture = $unDisque->getCouverture();
@@ -43,8 +45,10 @@
     </li>
     ");
     }
-
-    print("</ul>
+    ?>
+    </ul>  
+<?php
+    print("
     </body>
 </html>");
 ?>

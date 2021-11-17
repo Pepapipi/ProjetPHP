@@ -11,11 +11,9 @@ ul
 {
     display: flex;
     justify-content: space-around;
-    word-wrap: break-word;
     white-space: pre-line;
-    float: inline-end;
     list-style-type: none;
-    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .Titre{
@@ -31,6 +29,9 @@ p{
     cursor: pointer;
 }
 
-.styled:active {
-    
+
+button{
+    background-color: brown;
+    width: 170px;
+    height: 300px;
 }
