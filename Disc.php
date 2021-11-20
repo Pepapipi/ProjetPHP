@@ -61,5 +61,16 @@
         public function getCouvertureMax(){
             return "images/".$this->m_couverture."_Max.jpg";
         }
+
+        public function DiscToBDPDO(PDO $connexionPDO) // Ajoute un disque a une connexion BD de type PDO, exemple d'appel: $unDisque->DiscToBDPDO($uneConnexionPDO) 
+        {
+            $connexionPDO->exec("INSERT INTO VentesCD VALUES ('$this->m_titre', '$this->m_auteur', '$this->m_genre', '$this->m_prix', '$this->m_couverture')");
+        }
+
+        public function toString()
+        {
+            return "$this->m_titre,$this->m_auteur,$this->m_genre,$this->m_prix,$this->m_couverture";
+        }
+
     }
 ?>
