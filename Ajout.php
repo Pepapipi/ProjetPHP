@@ -23,7 +23,7 @@
         
         $unDisque = new Disc($nomAlbum,$nomArtiste,$genre,$prix,$photo);
         $unDisque->DiscToBDPDO($connPDO);
-        echo 'Le CD a bien été ajouté';
       }
+      echo '<meta http-equiv="refresh" content="0;URL=ajoutSupp.php">';
 
 ?>
