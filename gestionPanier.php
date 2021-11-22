@@ -36,45 +36,46 @@
         </header>
         <?php
         ?>
+        <form method="POST">
         <il>
-            <form method="post">
+            
         <?php
             $panier = unserialize($_SESSION['Panier']);
             $nbItem = $panier->getNbItems();
-            if (isset($_POST['suprSelect'])){
-                for ($i=$nbItem - 1; $i >= 0; $i--){
-                    if (isset($_POST[$i])){
-                        $panier->delItem($i);
-                        $_POST[$i] = false;
-                    }
-                }
+            if (isset($_POST['LeDisque'])){
+                $iDisqueASup=$_POST['LeDisque'];
+                $panier->delItem($iDisqueASup);
+                $_POST['LeDisque'] = false;
             }
             elseif(isset($_POST['suprTout'])){
                 $panier->vider();
             }
             $_SESSION['Panier'] = serialize($panier);
-            if (! ($panier->getNbItems() == 0)){
+            if (! ($panier->isEmpty())){
                 for ($i=0; $i < $panier->getNbItems(); $i++) { 
                     $leDisc = $panier->getItem($i);
                     $laCouverture = $leDisc->getCouvertureMin();
                     $leNom =        $leDisc->getTitre();
                     $lAuteur =     $leDisc->getAuteur();
-                    print ("<li class=\"titre\">
-                            <input type=\"checkbox\" name=\"$i\">
-                            <img src=$laCouverture height=\"150\" width=\"150\">
-                            <p class=\"Titre\">$leNom</p>
-                            <p>$lAuteur</p>
-                            </li>");                
+                    print ("<form method=\"POST\">
+                                <button class=\"titre\" type=\"submit\" name=\"LeDisque\" class=\"styled\" value=\"$i\">
+                                    <img src=$laCouverture height=\"150\" width=\"150\" onclick=\"help\">
+                                    <p class=\"Titre\">$leNom</p>
+                                    <p>$lAuteur</p>
+                                </button>
+                            </form>");                
                 }
-                print(" <input type=\"submit\" name=\"suprSelect\" value=\"Supprimer la selection\" class=\"button\">
-                        <input type=\"submit\" name=\"suprTout\" value=\"Vider le panier\" class=\"button\">");
+                print(" <p> Cliquez sur un Disque pour le suprimer du panier</p>
+                        <input type=\"submit\" name=\"suprTout\" value=\"Vider le panier\" class=\"button\">
+                        <input type=\"submit\" value=\"Valider et payer\" class=\"button\" formaction=\"validEtPayer.php\">");
             }
             else{
                 print ("<p>Le Panier est vide<p>");
             }
 
         ?>
-            </form>
+        
         </il>
+        </form>
     </body>
 </html>

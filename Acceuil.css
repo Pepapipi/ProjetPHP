@@ -30,8 +30,14 @@ p{
 }
 
 
-button{
+.titre{
     background-color: brown;
     width: 170px;
     height: 300px;
+}
+
+.menu{
+    background-color: brown;
+    width: 200px;
+    height: 20px;
 }

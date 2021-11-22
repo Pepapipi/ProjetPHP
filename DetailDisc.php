@@ -19,7 +19,7 @@
                 }
                 else
                 {
-                    print(" <form action=\"Login.php\">
+                    print(" <form action=\"login.php\">
                             <button class=\"menu\"> Se connecter </button>
                             </form>");
                 }
@@ -33,22 +33,13 @@
                 </form>
             </header>
             <?php
-
-                $bdd = "dnunez_pro";
-                $host = "lakartxela.iutbayonne.univ-pau.fr";
-                $user = "dnunez_pro";
-                $pass = "dnunez_pro";
-
                 if (isset($_POST['LeDisque'])){
                     $LeDisque=$_POST['LeDisque'];
-                    $connPDO = new PDO ('mysql:host='.$host.';dbname='.$bdd, $user, $pass);
-                    $result = $connPDO->query("SELECT * FROM VentesCD");
-                    while ($tuple = $result->fetch()) {
-                        if ($tuple[0]==$LeDisque){
-                            $LeDisque = new Disc($tuple[0], $tuple[1], $tuple[2], $tuple[3], $tuple[4]);
-                        }
-                    }
-                    $result->closeCursor();
+                    
+                    $array = explode(",",$LeDisque);
+
+                    $LeDisque = new Disc($array[0], $array[1], $array[2], $array[3], $array[4]);
+                    
                     $_SESSION['LeDisque']=serialize($LeDisque);
                 }else{
                     $LeDisque=unserialize($_SESSION['LeDisque']);

@@ -42,5 +42,21 @@
         {
             return $this->m_items[$indice];
         }
+
+        public function isEmpty()
+        {
+            return ($this->m_nombreItems == 0);
+        }
+
+        public function prixTotal()
+        {
+            $total = 0;
+            if (! ($this->isEmpty())){
+                for ($i=0; $i < $this->getNbItems(); $i++){
+                    $total += $this->getItem($i)->getPrix();
+                }
+            }
+            return $total;
+        }
     }
 ?>

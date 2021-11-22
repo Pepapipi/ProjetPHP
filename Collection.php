@@ -22,6 +22,11 @@
             return $this->m_disques;
         }
 
+        public function getUnDisque(int $indice)
+        {
+            return $this->m_disques[$indice];
+        }
+
         public function getNombreDisques(){
             return $this->m_nombreDisques;
         }
