@@ -1,5 +1,4 @@
 <?php 
-/*ON DOIT MODIFIER CE FICHIER POUR L'IMPORT DES IMAGES */
     include "Disc.php";
     $bdd = "dnunez_pro";
     $host = "lakartxela.iutbayonne.univ-pau.fr";
@@ -33,8 +32,11 @@
         /*Arrondi le prix s'il l'utilisteur a ajouté plusieurs chiffres après la virgule
         Exemple : 15.48678 -> 15.49 */
         
+        /*L'administratuer peut par mégarde rajouté une virgule au lieu d'un point pour la sépartion
+        Alors on remplace dans le prix la , par le . */
         $replaceVigPoint = str_replace(",",".",$prix);
         $prixA=round($replaceVigPoint,2);
+
         /*Expression régulière indiquant qu'il doit rentrer un prix correct 
         0.89 -> correct    -0.78 -> incorrect
         101 -> correct      10.89 -> correct
@@ -45,14 +47,7 @@
         //Recupere l'extension du fichier 
         $extensionObligatoire = 'jpg';
         $filename= $_FILES['photo']['name'];
-        $extensionFichier = pathinfo($filename,PATHINFO_EXTENSION);
-
-        //Création images (Min, Max)
-        /*var_dump($_FILES['photo']['tmp_name']);
-        move_uploaded_file($_FILES['photo']['tmp_name'], "./upload/".$_FILES['photo']['name']);*/
-        
-
-        
+        $extensionFichier = pathinfo($filename,PATHINFO_EXTENSION);        
 
 
         /*Ajoute le disque si toutes les conditions sont respectées, c'est à dire:
@@ -79,14 +74,19 @@
             ImageCopyResampled($image_min,$src_im_min,0,0,0,0,150,150,$src_w,$src_h);
             ImageCopyResampled($image_max,$src_im_max,0,0,0,0,544,544,$src_w,$src_h);
 
-            ImageJpeg($image_min,"./images/".$nomAlbum."_".$nomArtiste.".jpg");//Image minimum
-            ImageJpeg($image_max,"./images/".$nomAlbum."_".$nomArtiste."_Max.jpg");//Image maximum
+            $albumEtArtiste = $nomAlbum."_".$nomArtiste;
+            $nomAlbumEtArtiste = str_replace(" ", "_",$albumEtArtiste);
+
+            ImageJpeg($image_min,"./images/".$nomAlbumEtArtiste.".jpg");//Image minimum
+            ImageJpeg($image_max,"./images/".$nomAlbumEtArtiste."_Max.jpg");//Image maximum
 
             ImageDestroy($image_min);
             ImageDestroy($image_max);
             ImageDestroy($src_im_min);
             ImageDestroy($src_im_max);
-            $unDisque = new Disc($nomAlbum,$nomArtiste,$genre,$prixA,$nomAlbum."_".$nomArtiste);
+
+            
+            $unDisque = new Disc($nomAlbum,$nomArtiste,$genre,$prixA,$nomAlbumEtArtiste);
             $unDisque->DiscToBDPDO($connPDO);
 
         }
