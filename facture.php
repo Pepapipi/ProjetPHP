@@ -52,6 +52,7 @@
                 <form action="Acceuil.php">
                     <button class="menu"> Acceuil </button>
                 </form>';
+                $_SESSION['Panier'] = serialize($panier);
             }
             //Si la date d'expiration n'est pas valable
             elseif(!($dateExpi >= $dateValable))
