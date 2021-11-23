@@ -11,15 +11,17 @@
     
     if (!empty($_POST)) { 
         if (isset($_POST['Ajout'])) { 
-            echo '<h2>Ajouter un cd </h2>';
             echo'
-            <form action="Ajout.php" method="post" enctype="multipart/form-data" >
-                Titre Album: <input type="text" name="nomAlbum"><br />
-                Nom Artiste : <input type="text" name="nomArtiste" ><br />
-                Genre: <input type="text" name="nomGenre"><br />
-                Prix <input type="text" name="prix" ><br />
-                La photo <input type=file name="photo" ><br>
-            <input type="submit" name"cdAjout" value="Ajouter le cd"></form>';
+            <div class="AjoutTitre">
+            <h2>Ajouter un cd </h2>
+            <form action="Ajout.php" method="post" enctype="multipart/form-data">
+                Titre Album: <input type="text" name="nomAlbum"><br /><br>
+                Nom Artiste : <input type="text" name="nomArtiste" ><br /><br>
+                Genre: <input type="text" name="nomGenre"><br /><br>
+                Prix <input type="text" name="prix" ><br /><br>
+                La photo (.jpg)<input type=file accept="image/jpeg" name="photo"><br><br>
+            <input type="submit" name"cdAjout" value="Ajouter le cd"><br><br></form>
+            </div>';
         }
 
         elseif (isset($_POST['Supp'])) { 

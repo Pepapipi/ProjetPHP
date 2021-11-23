@@ -25,6 +25,7 @@
             $CCV = $_POST['CCV'];
             $dateExpi = $_POST['dateExpi'];
             $dateValable = date("Y-m",strtotime('+3 month'));
+            $dateMaintenant = date('d/m/Y');
 
             // Expression régulière, qui "oblige" l'utilisateur à saisir 16 chiffres pour le code de la CB
             $pattern = "/^[0-9]{16}/";
@@ -43,8 +44,9 @@
             {
                 $panier = unserialize($_SESSION['Panier']);
                 $aPayer = $panier->prixTotal();
-                mail($mail, "Facture du $date", "Bonjour $prenom $nom,\n \t ceci est le confirmation de votre commande de CDs de $aPayer €");
-                print("<p> Mail envoyé à $mail </p>");
+                mail($mail, "Facture du $dateMaintenant", "Bonjour $prenom $nom,\n \t ceci est le confirmation de votre commande de CDs de $aPayer €");
+                print("<p> Payement effectué le $dateMaintenant <br>
+                        Mail de confirmation envoyé à $mail </p>");
                 $panier->vider();
                 echo '
                 <form action="Acceuil.php">
