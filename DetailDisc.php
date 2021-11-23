@@ -7,27 +7,13 @@
     <html>
         <head>
             <meta charset="UTF-8">
-            <title>Acceuil</title>
+            <title>Détail De Titre</title>
             <link rel="stylesheet" href="Acceuil.css" />
         </head>
         <body>
             <header>
-                <h1>Détail de titre</h1>
-                <?php
-                if (isset($_SESSION['loginU']) && isset($_SESSION['pwdU'])) {
-                    echo '<p>Vous êtes connecté</p>
-                    <form>
-                    <input type="submit" formaction="logout.php" value="Deconnexion" name="Deco">
-                    </form>';
-                }
-                    
-                else
-                {
-                    print(" <form action=\"Formulaire.html\">
-                            <button class=\"menu\"> Se connecter </button>
-                            </form>");
-                }
-                ?>
+            <b class="entete">
+                <b class="gauche">
                 </form>
                 <form action="gestionPanier.php">
                     <button class="menu"> Voir panier</button>
@@ -35,7 +21,30 @@
                 <form action="Acceuil.php">
                     <button class="menu"> Retour </button>
                 </form>
+</b>
+                <b class="millieu">
+                <h1>Détail de titre</h1>
+</b>
+                <b class="droite">
+                <?php
+                if (isset($_SESSION['loginU']) && isset($_SESSION['pwdU'])) {
+                    echo '<p>Vous êtes connecté</p>
+                    <form>
+                    <input class="menu" type="submit" formaction="logout.php" value="Deconnexion" name="Deco">
+                    </form>';
+                }
+                    
+                else
+                {
+                    print(" <form action=\"Formulaire.php\">
+                            <button class=\"menu\"> Se connecter </button>
+                            </form>");
+                }
+                ?>
+                </b>
+            </b>
             </header>
+            <div id="PresentationDisc">
             <?php
                 if (isset($_POST['LeDisque'])){
                     $LeDisque=$_POST['LeDisque'];
@@ -62,12 +71,17 @@
                 $lAuteur = $LeDisque->getAuteur();
                 $leGenre = $LeDisque->getGenre();
                 $lePrix = $LeDisque->getPrix();
-                print(" <img src=$laCouverture>
-                        <p>$leTitre</p>
-                        <p>$lAuteur</p>
-                        <p>$leGenre</p>
-                        <p>$lePrix €</p>
-                        <form method=\"post\">
-                            <input type=\"submit\" name=\"panier\" class=\"button\" value=\"Ajouter au panier\" />
+                print(" <img id=\"couverture\" src=\"$laCouverture\">
+                        <div id=\"description\">
+                        <p>Titre : $leTitre</p>
+                        <p>Auteur : $lAuteur</p>
+                        <p>Genre : $leGenre</p>
+                        <p>Prix : $lePrix €</p>
+                        </div>
+                        <form id=\"ajoutPanier\" method=\"post\">
+                            <input class=\"bouton\" type=\"submit\" name=\"panier\" class=\"button\" value=\"Ajouter au panier\" />
                         </form>");
-                ?>
+            ?>
+            </div>
+        </body>
+    </html>

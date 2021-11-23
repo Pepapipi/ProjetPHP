@@ -70,14 +70,14 @@
             ImageCopyResampled($image_min,$src_im_min,0,0,0,0,150,150,$src_w,$src_h);
             ImageCopyResampled($image_max,$src_im_max,0,0,0,0,544,544,$src_w,$src_h);
 
-            ImageJpeg($image_min,"./images/".$_FILES['photo']['name']);//Image minimum
-            ImageJpeg($image_max,"./images/".basename($_FILES['photo']['name'],".jpg")."_Max.jpg");//Image maximum
+            ImageJpeg($image_min,"./images/".$nomAlbum."_".$nomArtiste.".jpg");//Image minimum
+            ImageJpeg($image_max,"./images/".$nomAlbum."_".$nomArtiste."_Max.jpg");//Image maximum
 
             ImageDestroy($image_min);
             ImageDestroy($image_max);
             ImageDestroy($src_im_min);
             ImageDestroy($src_im_max);
-            $unDisque = new Disc($nomAlbum,$nomArtiste,$genre,$prixA,basename($_FILES['photo']['name'],".jpg"));
+            $unDisque = new Disc($nomAlbum,$nomArtiste,$genre,$prixA,$nomAlbum."_".$nomArtiste);
             $unDisque->DiscToBDPDO($connPDO);
 
         }

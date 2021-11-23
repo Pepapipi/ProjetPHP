@@ -27,7 +27,7 @@
             print ("<li>
             <form method=\"POST\" action=\"Suppresion.php\">
                 <button class=\"titre\" type=\"submit\" name=\"LeDisque\" class=\"styled\" value=\"$sdisc\">
-                    <img src=$laCouverture height=\"150\" width=\"150\" onclick=\"help\">
+                    <img src=\"$laCouverture\" height=\"150\" width=\"150\" onclick=\"help\">
                     <p class=\"Titre\">$leNom</p>
                     <p>$lAuteur</p>
                 </button>
@@ -45,6 +45,8 @@
 
         $connPDO->beginTransaction();
         if ($connPDO->exec("DELETE FROM VentesCD WHERE `VentesCD`.`TITRE`=\"$titre\" AND `VentesCD`.`AUTEUR` = \"$auteur\" ")){
+            unlink($discASup->getCouvertureMin());
+            unlink($discASup->getCouvertureMax());
             $connPDO->commit();
         }
 

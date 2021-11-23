@@ -15,11 +15,11 @@
             <div class="AjoutTitre">
             <h2>Ajouter un cd </h2>
             <form action="Ajout.php" method="post" enctype="multipart/form-data">
-                Titre Album: <input type="text" name="nomAlbum"><br /><br>
-                Nom Artiste : <input type="text" name="nomArtiste" ><br /><br>
-                Genre: <input type="text" name="nomGenre"><br /><br>
-                Prix <input type="text" name="prix" ><br /><br>
-                La photo (.jpg)<input type=file accept="image/jpeg" name="photo"><br><br>
+                <p> Titre Album: <input type="text" name="nomAlbum"><br /> </p>
+                <p> Nom Artiste : <input type="text" name="nomArtiste" ><br /></p>
+                <p> Genre: <input type="text" name="nomGenre"><br /></p>
+                <p> Prix: <input type="number" name="prix" min="0"><br /></p>
+                <p> La photo (.jpg)<input type=file accept="image/jpeg" name="photo"><br/></p>
             <input type="submit" name"cdAjout" value="Ajouter le cd"><br><br></form>
             </div>';
         }

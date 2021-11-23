@@ -55,11 +55,11 @@
         }
 
         public function getCouvertureMin(){
-            return "images/".$this->m_couverture.".jpg";
+            return "./images/".$this->m_couverture.".jpg";
         }
 
         public function getCouvertureMax(){
-            return "images/".$this->m_couverture."_Max.jpg";
+            return "./images/".$this->m_couverture."_Max.jpg";
         }
 
         public function DiscToBDPDO(PDO $connexionPDO) // Ajoute un disque a une connexion BD de type PDO, exemple d'appel: $unDisque->DiscToBDPDO($uneConnexionPDO) 

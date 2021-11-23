@@ -13,32 +13,40 @@
     </head>
     <body>
         <header>
+        <b class="entete">
+            <b class="gauche">
+            <form action="Acceuil.php">
+                <button class="menu"> Acceuil </button>
+            </form>
+            </b>
+            <b class="millieu">
             <h1>Votre panier</h1>
+            </b>
+            <b class="droite">
             <?php
             $panier = unserialize($_SESSION['Panier']);
             if (isset($_SESSION['loginU']) && isset($_SESSION['pwdU'])) {
                 echo '<p>Vous êtes connecté</p>
                     <form>
-                    <input type="submit" formaction="logout.php" value="Deconnexion" name="Deco">
+                    <input class="menu" type="submit" formaction="logout.php" value="Deconnexion" name="Deco">
                     </form>';
             }
             else
             {
-                print(" <form action=\"Formulaire.html\">
+                print(" <form action=\"Formulaire.php\">
                         <button class=\"menu\"> Se connecter </button>
                         </form>");
             }
             ?>
+            </b>
             </form>
-            <form action="Acceuil.php">
-                <button class="menu"> Acceuil </button>
-            </form>
+        </b>
         </header>
         <?php
         ?>
         <form method="POST">
         <il>
-            
+        <h3 class="centré"> Cliquez sur un disque pour le suprimer du panier</h3>
         <?php
             $panier = unserialize($_SESSION['Panier']);
             $nbItem = $panier->getNbItems();
@@ -72,10 +80,9 @@
                 }
                 echo'</ul>';
                 $prixTotal = $panier->prixTotal();
-                print(" <p> Le prix total du panier <strong>$prixTotal €</strong></p>
-                        <p> Cliquez sur un disque pour le suprimer du panier</p>
-                        <input type=\"submit\" name=\"suprTout\" value=\"Vider le panier\" class=\"button\">
-                        <input type=\"submit\" value=\"Valider et payer\" class=\"button\" formaction=\"validEtPayer.php\">
+                print(" <p class=\"prixTotal\"> Le prix total du panier <strong>$prixTotal €</strong></p>
+                        <input class=\"bouton2\" type=\"submit\" name=\"suprTout\" value=\"Vider le panier\" class=\"button\">
+                        <input class=\"bouton2\" type=\"submit\" value=\"Valider et payer\" class=\"button\" formaction=\"validEtPayer.php\">
                         ");
 
             }
