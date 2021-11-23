@@ -17,46 +17,36 @@
 
         $lesDisques = $laCollection->getDisques();
         $nbDisques = sizeof($lesDisques);
-
+        echo '<ul>';
         for ($i=0; $i < $nbDisques; $i++) { 
             $unDisque =     $lesDisques[$i];
             $laCouverture = $unDisque->getCouvertureMin();
             $leNom =        $unDisque->getTitre();
             $lAuteur =     $unDisque->getAuteur();
+            $sdisc=        $unDisque->toString();
             print ("<li>
-            <form method=\"POST\">
-                <button class=\"titre\" type=\"submit\" name=\"LeDisque\" class=\"styled\" value=\"$leNom\">
+            <form method=\"POST\" action=\"Suppresion.php\">
+                <button class=\"titre\" type=\"submit\" name=\"LeDisque\" class=\"styled\" value=\"$sdisc\">
                     <img src=$laCouverture height=\"150\" width=\"150\" onclick=\"help\">
                     <p class=\"Titre\">$leNom</p>
                     <p>$lAuteur</p>
                 </button>
-            </form>
+            </form >
         </li>
         ");
         }
+        echo'</ul>';
     }
 
     function supprimer(PDO $connPDO, Disc $discASup){
         
-        var_dump($discASup);
         $titre = $discASup->getTitre();
         $auteur = $discASup->getAuteur();
 
         $connPDO->beginTransaction();
         if ($connPDO->exec("DELETE FROM VentesCD WHERE `VentesCD`.`TITRE`=\"$titre\" AND `VentesCD`.`AUTEUR` = \"$auteur\" ")){
-            //$connPDO->commit();
+            $connPDO->commit();
         }
 
-    }
-
-    afficherSupprimer($connPDO);
-    if (isset($_POST['LeDisque'])){
-        $LeDisque = $_POST['LeDisque'];
-        $result = $connPDO->query("SELECT * FROM VentesCD WHERE `VentesCD`.`TITRE`=\"$LeDisque\"");
-        $tuple = $result->fetch();
-        $LeDisque = new Disc($tuple[0], $tuple[1], $tuple[2], $tuple[3], $tuple[4]);
-        $result->closeCursor();
-
-        supprimer($connPDO, $LeDisque);
     }
 ?>

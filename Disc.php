@@ -55,7 +55,7 @@
         }
 
         public function getCouvertureMin(){
-            return "images/".$this->m_couverture."_Min.jpg";
+            return "images/".$this->m_couverture.".jpg";
         }
 
         public function getCouvertureMax(){

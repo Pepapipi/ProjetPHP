@@ -1,12 +1,29 @@
-<html> <head> <title>Formulaire d'identification</title> </head>
+<html> 
+    <meta charset="UTF-8">
+    <title>Formulaire d'identification</title>
+    <link rel="stylesheet" type="text/css" href="Acceuil.css" />
+    <head> <h1>Formulaire d'identification</h1> </head>
  <body>
-<form action="login.php" method="post">
- Votre login : <input type="text" name="login">
-<br />
- Votre mot de passe : <input type="password" name="pwd"><br />
-<input type="submit" value="Connexion">
-</form>
-</body>
+        <div id="Formulaire_Connexion_U">
+        
+            <form action="login.php" method="post">
+                <div class="aa"></div>
+                <p>Connexion Utilisateur</p>
+                Login : <input type="text" name="loginU">
+                <br />
+                Mot de passe : <input type="password" name="pwdU"><br />
+                <input type="submit" value="Connexion">
+            </div>
+        </div>
+        <div id="Formulaire_Connexion_A">
+                <p>Connexion Administrateur</p>
+                Login : <input type="text" name="loginA">
+                <br />
+                Mot de passe : <input type="password" name="pwdA"><br />
+                <input type="submit" value="Connexion">
+            </form>
+        </div>
+    </body>
 </html>
 
 

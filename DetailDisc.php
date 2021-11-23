@@ -14,12 +14,16 @@
             <header>
                 <h1>Détail de titre</h1>
                 <?php
-                if (isset($_SESSION['login']) && isset($_SESSION['pwd'])) {
-                    print "<p>Vous êtes connecté</p>";
+                if (isset($_SESSION['loginU']) && isset($_SESSION['pwdU'])) {
+                    echo '<p>Vous êtes connecté</p>
+                    <form>
+                    <input type="submit" formaction="logout.php" value="Deconnexion" name="Deco">
+                    </form>';
                 }
+                    
                 else
                 {
-                    print(" <form action=\"login.php\">
+                    print(" <form action=\"Formulaire.html\">
                             <button class=\"menu\"> Se connecter </button>
                             </form>");
                 }
