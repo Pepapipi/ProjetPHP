@@ -18,7 +18,7 @@
                 <p> Titre Album: <input type="text" name="nomAlbum"><br /> </p>
                 <p> Nom Artiste : <input type="text" name="nomArtiste" ><br /></p>
                 <p> Genre: <input type="text" name="nomGenre"><br /></p>
-                <p> Prix: <input type="number" name="prix" min="0"><br /></p>
+                <p> Prix: <input type="text" name="prix" min="0"><br /></p>
                 <p> La photo (.jpg)<input type=file accept="image/jpeg" name="photo"><br/></p>
             <input type="submit" name"cdAjout" value="Ajouter le cd"><br><br></form>
             </div>';

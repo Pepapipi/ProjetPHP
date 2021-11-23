@@ -32,7 +32,15 @@
 
         /*Arrondi le prix s'il l'utilisteur a ajouté plusieurs chiffres après la virgule
         Exemple : 15.48678 -> 15.49 */
-        $prixA=round($prix,2);
+        
+        $replaceVigPoint = str_replace(",",".",$prix);
+        $prixA=round($replaceVigPoint,2);
+        /*Expression régulière indiquant qu'il doit rentrer un prix correct 
+        0.89 -> correct    -0.78 -> incorrect
+        101 -> correct      10.89 -> correct
+        010.4 -> incorrect*/
+        
+        $pattern3 = "/^(0\.[0-9]{0,2})|([1-9][0-9]*\.[0-9]{0,2})|[1-9][0-9]*/";
 
         //Recupere l'extension du fichier 
         $extensionObligatoire = 'jpg';
@@ -49,13 +57,14 @@
 
         /*Ajoute le disque si toutes les conditions sont respectées, c'est à dire:
         Le nom de l'album, le nom de l'artiste ne soit pas vide (et qu'il n'est pas un caractère " ")
-        Que l'administateur n'ait mit que des chiffres dans le prix
-        Que le prix soit supérieur à 0
-        Que le format est respecté
+        Que l'administateur ait mis un prix de façon correcte 
+        Que le format soit respecté
         */
-        if (preg_match($pattern2, $nomAlbum) & preg_match($pattern2, $nomArtiste) & preg_match($pattern, $genre) & $prixA > 0 & $extensionObligatoire==$extensionFichier)
+        if (preg_match($pattern2, $nomAlbum) & preg_match($pattern2, $nomArtiste) & preg_match($pattern, $genre) & preg_match($pattern3, $prixA) & $extensionObligatoire==$extensionFichier & $prixA > 0)
         {
             
+            /*On récupère l'image inserer par l'utilisateur, pour ensuite la dupliquer 2 fois en ayant 
+            des tailles différentes, et on mettre ces 2 images dans le dossier images */
 
             $size = GetImageSize($_FILES['photo']['tmp_name']);
             $src_w = $size[0]; $src_h = $size[1];
@@ -80,6 +89,10 @@
             $unDisque = new Disc($nomAlbum,$nomArtiste,$genre,$prixA,$nomAlbum."_".$nomArtiste);
             $unDisque->DiscToBDPDO($connPDO);
 
+        }
+        elseif(!preg_match($pattern, $genre))
+        {
+            echo '<body onLoad="alert(\'Le genre doit avoir sa première lettre en majuscule, et que la premiere lettre\')">';
         }
         else
         {
