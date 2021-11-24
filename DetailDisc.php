@@ -57,7 +57,7 @@
                 }
     
     
-    
+                //Affiche la description complete du disque
                 $laCouverture = $LeDisque->getCouvertureMax();
                 $leTitre = $LeDisque->getTitre();
                 $lAuteur = $LeDisque->getAuteur();
