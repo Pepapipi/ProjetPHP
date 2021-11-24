@@ -64,7 +64,7 @@
                     $lAuteur =     $leDisc->getAuteur();
                     print ("<form method=\"POST\">
                                 <button class=\"titre\" type=\"submit\" name=\"LeDisque\" class=\"styled\" value=\"$i\">
-                                    <img src=$laCouverture height=\"150\" width=\"150\" onclick=\"help\">
+                                    <img src=\"$laCouverture\" height=\"150\" width=\"150\" onclick=\"help\">
                                     <p class=\"Titre\">$leNom</p>
                                     <p>$lAuteur</p>
                                 </button>
