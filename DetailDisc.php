@@ -53,6 +53,7 @@
                     $Panier = unserialize($_SESSION['Panier']);
                     $Panier->addItem($LeDisque);
                     $_SESSION['Panier'] = serialize($Panier);
+                    echo '<h3 class="centré"> Article ajouté au panier</h3>';
                 }
     
     
