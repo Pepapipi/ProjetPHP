@@ -40,7 +40,7 @@
                 Si le premier chiffre du code de la CB = le dernier chiffre du code de la CB
                 Si la date d'expiration de la carte est valable ou non (supérieur à 3 mois à partir d'aujourd'hui)
             */
-            if (!empty($nom) & !empty($prenom) & !empty($mail) & preg_match($pattern,$numCarte) & preg_match($pattern2,$CCV) & $numCarte[0]==$numCarte[15] & $dateExpi >= $dateValable)
+            if (!filter_var($mail, FILTER_VALIDATE_EMAIL) & !empty($nom) & !empty($prenom) & !empty($mail) & preg_match($pattern,$numCarte) & preg_match($pattern2,$CCV) & $numCarte[0]==$numCarte[15] & $dateExpi >= $dateValable)
             {
                 $panier = unserialize($_SESSION['Panier']);
                 $aPayer = $panier->prixTotal();
