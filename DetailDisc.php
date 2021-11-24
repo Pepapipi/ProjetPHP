@@ -60,7 +60,8 @@
                     $LeDisque=unserialize($_SESSION['LeDisque']);
                 }
     
-                if (isset($_POST['panier'])){
+                if (isset($_POST['panier'])) // si le bouton ajout au panier a été cliqué, ajoute le disque en cours au panier
+                {
                     $Panier = unserialize($_SESSION['Panier']);
                     $Panier->addItem($LeDisque);
                     $_SESSION['Panier'] = serialize($Panier);
