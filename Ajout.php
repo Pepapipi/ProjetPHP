@@ -56,7 +56,7 @@
         if (preg_match($pattern2, $nomAlbum) & preg_match($pattern2, $nomArtiste) & preg_match($pattern, $genre) & $prixA > 0 & $extensionObligatoire==$extensionFichier)
         {
             
-
+            // On récupère l'image uploadé par l'utilisateur, on l'a redimensionne et on l'enregistre en deux versions min 150x150 et normal 544x544
             $size = GetImageSize($_FILES['photo']['tmp_name']);
             $src_w = $size[0]; $src_h = $size[1];
             $image_min = ImageCreate(150,150);
