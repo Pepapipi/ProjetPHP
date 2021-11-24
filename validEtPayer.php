@@ -49,7 +49,7 @@
                             </div>
                             <div class="formAchat">
                                 <label for="dateExpi">Date d\'expiration de la carte: </label>
-                                <input type="month" name="dateExpi" id="dateExpi" min="$dateMin">
+                                <input type="month" name="dateExpi" id="dateExpi">
                             </div>
                             <div class="formAchat">
                                 <label for="CCV">CCV de la carte: </label>
