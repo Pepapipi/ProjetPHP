@@ -25,6 +25,7 @@
             echo '<meta http-equiv="refresh" content="0;URL=Formulaire.php">';
         }
     }
+//Connexion pour la partie administrateur
     elseif ((isset($_POST['loginA']) && isset($_POST['pwdA']))) {
         if($loginA_valide == $_POST['loginA'] && $pwdA_valide == $_POST['pwdA']){
             session_start ();
