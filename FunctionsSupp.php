@@ -9,6 +9,7 @@
 
     $connPDO = new PDO ('mysql:host='.$host.';dbname='.$bdd, $user, $pass);
 
+//Affiche tout les disques qui peuvent être supprimés
     function afficherSupprimer(PDO $connPDO) {
         $result = $connPDO->query("SELECT * FROM VentesCD");
         $laCollection = new Collection();
@@ -38,6 +39,7 @@
         echo'</ul>';
     }
 
+    //supprime un cd de la BD
     function supprimer(PDO $connPDO, Disc $discASup){
         
         $titre = $discASup->getTitre();
