@@ -30,6 +30,7 @@
                                 </b>
                             </b>
                         </header>
+                        //Affiche le formulaire de paiement
                         <form action="facture.php" method="POST" class="formDon">
                             <div class="formAchat">
                                 <label for="Nom">Nom sur la carte: </label>
