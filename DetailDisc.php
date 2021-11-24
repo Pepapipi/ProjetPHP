@@ -27,7 +27,8 @@
 </b>
                 <b class="droite">
                 <?php
-                if (isset($_SESSION['loginU']) && isset($_SESSION['pwdU'])) {
+                if (isset($_SESSION['loginU']) && isset($_SESSION['pwdU']))
+                {
                     echo '<p>Vous êtes connecté</p>
                     <form>
                     <input class="menu" type="submit" formaction="logout.php" value="Deconnexion" name="Deco">
@@ -46,7 +47,8 @@
             </header>
             <div id="PresentationDisc">
             <?php
-                if (isset($_POST['LeDisque'])){
+                if (isset($_POST['LeDisque'])) // on enregistre le disque dans une variable de session pour le conserver si on ne passe pas par l'accueil
+                {
                     $LeDisque=$_POST['LeDisque'];
                     
                     $array = explode(",",$LeDisque);
