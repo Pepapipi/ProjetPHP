@@ -65,10 +65,11 @@
                     $Panier = unserialize($_SESSION['Panier']);
                     $Panier->addItem($LeDisque);
                     $_SESSION['Panier'] = serialize($Panier);
+                    echo '<h3 class="centré"> Article ajouté au panier</h3>';
                 }
     
     
-    
+                //Affiche la description complete du disque
                 $laCouverture = $LeDisque->getCouvertureMax();
                 $leTitre = $LeDisque->getTitre();
                 $lAuteur = $LeDisque->getAuteur();
@@ -88,3 +89,4 @@
             </div>
         </body>
     </html>
+

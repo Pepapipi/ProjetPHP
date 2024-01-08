@@ -58,8 +58,10 @@
         if (preg_match($pattern2, $nomAlbum) & preg_match($pattern2, $nomArtiste) & preg_match($pattern, $genre) & preg_match($pattern3, $prixA) & $extensionObligatoire==$extensionFichier & $prixA > 0)
         {
             
+
             /*On récupère l'image inserer par l'utilisateur, pour ensuite la dupliquer 2 fois en ayant 
             des tailles différentes, et on mettre ces 2 images dans le dossier images */
+
 
             $size = GetImageSize($_FILES['photo']['tmp_name']);
             $src_w = $size[0]; $src_h = $size[1];
