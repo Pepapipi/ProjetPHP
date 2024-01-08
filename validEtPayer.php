@@ -13,19 +13,24 @@
                     </head>
                     <body>
                         <header>
-                            <h1>Votre panier</h1>';
-                            $panier = unserialize($_SESSION['Panier']);
-                            print "<p>Vous êtes connecté</p>";
-                            echo '<form action="gestionPanier.php">
-                                    <button class="menu"> Voir panier</button>
-                                </form>
-                                <form action="Acceuil.php">
-                                    <button class="menu"> Acceuil </button>
-                                </form>
-                                <form>
-                                    <input type="submit" formaction="logout.php" value="Deconnexion" name="Deco">
-                                </form>
+                            <b class="entete">
+                                <b class="gauche">
+                                    <form action="Acceuil.php">
+                                        <button class="menu"> Acceuil </button>
+                                    </form>
+                                </b>
+                                <b class="millieu">
+                                    <h1>Votre panier</h1>
+                                </b>
+                                <b class="droite">
+                                    <p>Vous êtes connecté</p>
+                                    <form>
+                                        <input class="menu" type="submit" formaction="logout.php" value="Deconnexion" name="Deco">
+                                    </form>
+                                </b>
+                            </b>
                         </header>
+                        //Affiche le formulaire de paiement
                         <form action="facture.php" method="POST" class="formDon">
                             <div class="formAchat">
                                 <label for="Nom">Nom sur la carte: </label>
@@ -45,7 +50,7 @@
                             </div>
                             <div class="formAchat">
                                 <label for="dateExpi">Date d\'expiration de la carte: </label>
-                                <input type="month" name="dateExpi" id="dateExpi" min="$dateMin">
+                                <input type="month" name="dateExpi" id="dateExpi">
                             </div>
                             <div class="formAchat">
                                 <label for="CCV">CCV de la carte: </label>
@@ -60,5 +65,5 @@
     }
     else
     {
-        echo '<meta http-equiv="refresh" content="0;URL=Formulaire.html">';
+        echo '<meta http-equiv="refresh" content="0;URL=Formulaire.php">';
     }

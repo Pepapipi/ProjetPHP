@@ -40,11 +40,11 @@
                 Si le premier chiffre du code de la CB = le dernier chiffre du code de la CB
                 Si la date d'expiration de la carte est valable ou non (supérieur à 3 mois à partir d'aujourd'hui)
             */
-            if (!empty($nom) & !empty($prenom) & !empty($mail) & preg_match($pattern,$numCarte) & preg_match($pattern2,$CCV) & $numCarte[0]==$numCarte[15] & $dateExpi >= $dateValable)
+            if (!filter_var($mail, FILTER_VALIDATE_EMAIL) & !empty($nom) & !empty($prenom) & !empty($mail) & preg_match($pattern,$numCarte) & preg_match($pattern2,$CCV) & $numCarte[0]==$numCarte[15] & $dateExpi >= $dateValable)
             {
                 $panier = unserialize($_SESSION['Panier']);
                 $aPayer = $panier->prixTotal();
-                mail($mail, "Facture du $dateMaintenant", "Bonjour $prenom $nom,\n \t ceci est le confirmation de votre commande de CDs de $aPayer €");
+                //mail($mail, "Facture du $dateMaintenant", "Bonjour $prenom $nom,\n \t ceci est le confirmation de votre commande de CDs de $aPayer €");
                 print("<p> Payement effectué le $dateMaintenant <br>
                         Mail de confirmation envoyé à $mail </p>");
                 $panier->vider();
@@ -52,11 +52,13 @@
                 <form action="Acceuil.php">
                     <button class="menu"> Acceuil </button>
                 </form>';
+                $_SESSION['Panier'] = serialize($panier);
             }
             //Si la date d'expiration n'est pas valable
             elseif(!($dateExpi >= $dateValable))
             {
-                echo '<body onLoad="alert(\'La date d\'expiration n\'est pas valide\')">';
+                echo '<body onLoad="alert(\'La date d\\\'expiration n\\\'est pas valide\')">';
+                echo '</body>';
                 echo '<meta http-equiv="refresh" content="0;URL=validEtPayer.php">';
                 
             }
@@ -64,12 +66,13 @@
             else
             {
                 echo '<body onLoad="alert(\'Veuillez remplir tout les champs correctement\')">';
+                
                 echo '<meta http-equiv="refresh" content="0;URL=validEtPayer.php">';
             }
             
         
             echo'</body>
-        </html>';
+            </html>';
     }
     else
     {

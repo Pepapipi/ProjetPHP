@@ -17,24 +17,32 @@
         </head>
         <body>
             <header>
-                <h1>Achat de titre</h1>
-                <?php
-                if (isset($_SESSION['loginU']) && isset($_SESSION['pwdU'])) {
-                    echo'<p>Vous êtes connecté</p>
-                    <form>
-                    <input type="submit" formaction="logout.php" value="Deconnexion" name="Deco">
-                    </form>';
-                }
-                else
-                {
-                    print(" <form action=\"Formulaire.html\">
-                            <button class=\"menu\"> Se connecter </button>
-                            </form>");
-                }
-                ?>
-                <form action="gestionPanier.php">
-                    <button class="menu"> Voir panier</button>
-                </form>
+                <b class="entete">
+                    <b class="gauche">
+                        <form action="gestionPanier.php">
+                            <button class="menu"> Voir panier</button>
+                        </form>
+                    </b>
+                    <b class="millieu">
+                        <h1>Achat de titre</h1>
+                    </b>
+                    <b class="droite">
+                        <?php
+                        if (isset($_SESSION['loginU']) && isset($_SESSION['pwdU'])) {
+                            echo'<p>Vous êtes connecté</p>
+                            <form>
+                            <input class="menu" type="submit" formaction="logout.php" value="Deconnexion" name="Deco">
+                            </form>';
+                        }
+                        else
+                        {
+                            print(" <form action=\"Formulaire.php\">
+                                    <button class=\"menu\"> Se connecter </button>
+                                    </form>");
+                        }
+                        ?>
+                    </b>
+                </b>
             </header>
 
     <?php
@@ -64,7 +72,7 @@
         print ("<li>
         <form action=\"DetailDisc.php\" method=\"POST\">
             <button class=\"titre\" type=\"submit\" name=\"LeDisque\" class=\"styled\" value=\"$sDisc\">
-                <img src=$laCouverture height=\"150\" width=\"150\" onclick=\"help\">
+                <img src=\"$laCouverture\" height=\"150\" width=\"150\" onclick=\"help\">
                 <p class=\"Titre\">$leNom</p>
                 <p>$lAuteur</p>
             </button>
